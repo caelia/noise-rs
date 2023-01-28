@@ -1,0 +1,344 @@
+[lib]
+	> core
+	> permutationtable
+	> utils
+	> noise_fns::*
+	| gradient
+	| math
+	| noise_fns
+
+[core]
+	> open_simplex
+	> perlin
+	> perlin_surflet
+	> simplex
+	> super_simplex
+	> value
+	> worley
+
+[utils]
+	> self::color_gradient::*
+	> self::noise_image::*
+	> self::noise_map::*
+	> self::noise_map_builder::*
+	| color_gradient
+	(feature: image {  <- Y not "images"???
+	> self::image_renderer
+	| image_renderer
+	})
+
+[permutationtable]
+
+[math]
+	>: interpolate
+	>: s_curve
+	>: vectors
+
+[noise_fns]
+	> cache::*
+	> combiners::*
+	> generators::*
+	> modifiers::*
+	> selectors::*
+	> transformers::*
+	| cache;
+	| combiners;
+	| generators;
+	| modifiers;
+	| selectors;
+	| transformers;
+
+[noise_fns::cache]
+	| noise_fns::NoiseFn
+
+[noise_fns::combiners]
+	> add::*
+	> max::*
+	> min::*
+	> multiply::*
+	> power::*
+	| add
+	| max
+	| min
+	| multiply
+	| power
+
+[noise_fns::generators]
+	> checkerboard::*
+	> constant::*
+	> cylinders::*
+	> fractals::*
+	> open_simplex::*
+	> perlin::*
+	> perlin_surflet::*
+	> simplex::*
+	> super_simplex::*
+	> value::*
+	> worley::*
+	| checkerboard
+	| constant
+	| cylinders
+	| fractals
+	| open_simplex
+	| perlin
+	| perlin_surflet
+	| simplex
+	| super_simplex
+	| value
+	| worley
+
+[noise_fns::modifiers]
+	> abs::*
+	> clamp::*
+	> curve::*
+	> exponent::*
+	> negate::*
+	> scale_bias::*
+	> terrace::*
+	| abs
+	| clamp
+	| curve
+	| exponent
+	| negate
+	| scale_bias
+	| terrace
+
+[noise_fns::selectors]
+	> blend::*
+	> select::*
+	| blend
+	| select
+
+[noise_fns::transformers]
+	> displace::*
+	> rotate_point::*
+	> scale_point::*
+	> translate_point::*
+	> turbulence::*
+	| displace
+	| rotate_point
+	| scale_point
+	| translate_point
+	| turbulence
+
+[noise_fns::combiners::add]
+	| noise_fns::NoiseFn
+
+[noise_fns::combiners::max]
+	| noise_fns::NoiseFn
+
+[noise_fns::combiners::min]
+	| noise_fns::NoiseFn
+
+[noise_fns::combiners::multiply]
+	| noise_fns::NoiseFn
+
+[noise_fns::combiners::power]
+	| noise_fns::NoiseFn
+
+[noise_fns::generators::checkerboard]
+	| noise_fns::NoiseFn
+
+[noise_fns::generators::constant]
+	| noise_fns::NoiseFn
+
+[noise_fns::generators::cylinders]
+	| noise_fns::NoiseFn
+
+[noise_fns::generators::fractals]
+	> basicmulti::*
+	> billow::*
+	> fbm::*
+	> hybridmulti::*
+	> ridgedmulti::*
+	| basicmulti
+	| billow
+	| fbm
+	| hybridmulti
+	| ridgedmulti
+
+[noise_fns::generators::open_simplex]
+    | core::open_simplex::{open_simplex_2d, open_simplex_3d, open_simplex_4d}
+    | noise_fns::{NoiseFn, Seedable}
+    | permutationtable::PermutationTable
+
+[noise_fns::generators::perlin]
+    | core::perlin::*
+    | noise_fns::{NoiseFn, Seedable}
+    | permutationtable::PermutationTable
+
+[noise_fns::generators::perlin_surflet]
+    | core::perlin_surflet::*
+    | noise_fns::{NoiseFn, Seedable}
+    | permutationtable::PermutationTable
+
+[noise_fns::generators::simplex]
+    | core::simplex::*
+    | noise_fns::{NoiseFn, Seedable}
+    | permutationtable::PermutationTable
+
+[noise_fns::generators::super_simplex]
+    | core::super_simplex::*
+    | noise_fns::{NoiseFn, Seedable}
+    | permutationtable::PermutationTable
+
+[noise_fns::generators::value]
+    | core::value::{value_2d, value_3d, value_4d}
+    | noise_fns::{NoiseFn, Seedable}
+    | permutationtable::PermutationTable
+
+[noise_fns::generators::worley]
+    | core::worley::*
+    | math::vectors::*
+    | noise_fns::{NoiseFn, Seedable}
+    | permutationtable::PermutationTable
+
+[noise_fns::generators::fractals::basicmulti]
+    | math::vectors::*
+    | noise_fns::{MultiFractal, NoiseFn, Seedable}
+
+[noise_fns::generators::fractals::billow]
+    | math::{scale_shift, vectors::*}
+    | noise_fns::{MultiFractal, NoiseFn, Seedable}
+
+[noise_fns::generators::fractals::fbm]
+    | math::vectors::*
+    | noise_fns::{MultiFractal, NoiseFn, Seedable}
+
+[noise_fns::generators::fractals::hybridmulti]
+    | math::vectors::*
+    | noise_fns::{MultiFractal, NoiseFn, Seedable}
+
+[noise_fns::generators::fractals::ridgedmulti]
+    | math::vectors::*
+    | noise_fns::{MultiFractal, NoiseFn, Seedable}
+
+[noise_fns::modifiers::abs]
+	| noise_fns::NoiseFn
+
+[noise_fns::modifiers::clamp]
+	| noise_fns::NoiseFn
+
+[noise_fns::modifiers::curve]
+	| math::interpolate
+	| noise_fns::NoiseFn
+
+[noise_fns::modifiers::exponent]
+	| math::scale_shift
+	| noise_fns::NoiseFn
+
+[noise_fns::modifiers::negate]
+	| noise_fns::NoiseFn
+
+[noise_fns::modifiers::scale_bias]
+	| noise_fns::NoiseFn
+
+[noise_fns::modifiers::terrace]
+	| math::interpolate
+	| noise_fns::NoiseFn
+
+[noise_fns::selectors::blend]
+	| math::interpolate
+	| noise_fns::NoiseFn
+
+[noise_fns::selectors::select]
+	| math::interpolate
+	| math::s_curve::cubic::Cubic;
+	| noise_fns::NoiseFn
+
+[noise_fns::transformers::displace]
+	| noise_fns::NoiseFn
+
+[noise_fns::transformers::rotate_point]
+	| noise_fns::NoiseFn
+
+[noise_fns::transformers::scale_point]
+	| noise_fns::NoiseFn
+
+[noise_fns::transformers::translate_point]
+	| noise_fns::NoiseFn
+
+[noise_fns::transformers::turbulence]
+	| noise_fns::Fbm
+	| noise_fns::MultiFractal
+	| noise_fns::NoiseFn
+	| noise_fns::Seedable
+
+[core::open_simplex]
+    | gradient
+    | math::vectors::{Vector, Vector2, Vector3, Vector4, VectorMap}
+    | permutationtable::NoiseHasher
+
+[core::perlin]
+    | math::s_curve::quintic::Quintic
+    | math::vectors::{Vector, Vector2, Vector3, Vector4}
+    | permutationtable::NoiseHasher
+
+[core::perlin_surflet]
+    | gradient
+    | math::vectors::{Vector, Vector2, Vector3, Vector4}
+    | permutationtable::NoiseHasher
+
+[core::simplex]
+    | gradient
+    | math::vectors::{Vector, Vector2, Vector3, Vector4}
+    | permutationtable::NoiseHasher
+
+[core::super_simplex]
+    | gradient
+    | math::vectors::*
+    | permutationtable::NoiseHasher
+
+[core::value]
+	| math::interpolate
+    | math::s_curve::quintic::Quintic
+    | math::vectors::*
+    | permutationtable::NoiseHasher
+
+[core::worley]
+    | math::vectors::{Vector, Vector2, Vector3, Vector4, VectorMap}
+    | permutationtable::NoiseHasher
+
+[math::interpolate]
+
+[math::s_curve]
+	>: cubic
+	>: quintic
+
+[math::vectors]
+	> vector2::*
+	> vector3::*
+	> vector4::*
+	|: vector2
+	|: vector3
+	|: vector4
+
+[math::s_curve::cubic]
+
+[math::s_curve::quintic]
+	| math::vectors
+
+[math::vectors::vector2]
+	| vector::{Vector, VectorMap}
+
+[math::vectors::vector3]
+	| vector::{Vector, VectorMap}
+
+[math::vectors::vector4]
+	| vector::{Vector, VectorMap}
+
+[utils::color_gradient]
+
+[utils::image_renderer]
+	| math::interpolate
+
+[utils::noise_image]
+	| utils::color_gradient::Color
+
+[utils::noise_map]
+
+[utils::noise_map_builder]
+    | math::interpolate
+	| noise_fns::NoiseFn
+	| permutationtable::NoiseHasher
+	| utils::noise_map::NoiseMap
